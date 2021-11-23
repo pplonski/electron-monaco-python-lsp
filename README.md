@@ -148,3 +148,9 @@ server forward
 ## python-lsp-server
 
 Python LSP server is launched in main process.
+
+
+## Problems to be fixed:
+
+- errors after `npm install`
+- Failed to load resource: the server responded with a status of 404 (Not Found) - cant load `editor.worker.bundle.js` 
