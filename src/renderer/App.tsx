@@ -36,7 +36,6 @@ const Hello = () => {
   }
 
   useEffect(() => {
-    console.log('register python');
 
     monaco.languages.register({
       id: 'python',
@@ -47,11 +46,10 @@ const Hello = () => {
 
     monaco.editor.create(document.getElementById('container')!, {
       model: monaco.editor.createModel(
-        ['import numpy', 'def func1():', '\tpass'].join('\n'),
+        ['import numpy', 'def func1():', '\tpass', '', 'func1()'].join('\n'),
         'python',
         monaco.Uri.parse('inmemory://model.py')
       ),
-      theme: 'vs-dark',
     });
 
     monaco.editor.create(document.getElementById('container2')!, {
@@ -60,7 +58,6 @@ const Hello = () => {
         'python',
         monaco.Uri.parse('inmemory://model2.py')
       ),
-      theme: 'vs-dark',
     });
 
     // // install Monaco language client services
@@ -89,7 +86,7 @@ const Hello = () => {
         python-lsp-server
       </h1>
 
-      <div style={{ border: 'solid 2px black' }}>
+      <div style={{ border: 'solid 2px blue' }}>
         <div id="container" style={{ height: '300px' }} />
       </div>
       <div style={{ border: 'solid 2px green' }}>

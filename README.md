@@ -24,12 +24,12 @@ pip install numpy
 Output from `pip freeze`:
 
 ```
-jedi==0.18.1
+jedi==0.17.2
 numpy==1.21.4
 parso==0.8.2
 pluggy==1.0.0
 python-lsp-jsonrpc==1.0.0
-python-lsp-server==1.2.4
+python-lsp-server==1.3.1
 ujson==4.3.0
 yapf==0.31.0
 ```
