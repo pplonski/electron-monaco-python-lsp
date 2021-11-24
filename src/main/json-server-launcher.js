@@ -15,7 +15,7 @@ function launch(socket) {
     '/home/piotr/sandbox/example/pyls/venv/bin/pylsp' // path to python-lsp-server called with pylsp command
   );
   server.forward(socketConnection, serverConnection, (message) => {
-    console.log('server forward');
+    // console.log('server forward');
     if (rpc.isRequestMessage(message)) {
       if (message.method === lsp.InitializeRequest.type.method) {
         const initializeParams = message.params;

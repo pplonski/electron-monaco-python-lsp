@@ -155,10 +155,6 @@ export default merge(baseConfig, {
       isDevelopment: process.env.NODE_ENV !== 'production',
       nodeModules: webpackPaths.appNodeModulesPath,
     }),
-    new MonacoEditorWebpackPlugin(),
-      // {
-    //  monacoEditorPath2: 'monaco-editor-core',
-    //}),
     new NodePolyfillPlugin(),
   ],
 

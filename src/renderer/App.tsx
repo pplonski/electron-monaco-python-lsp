@@ -9,12 +9,10 @@ import {
   ErrorAction,
   createConnection,
 } from '@codingame/monaco-languageclient';
-import * as monaco from 'monaco-editor-core';
+import * as monaco from 'monaco-editor';
+import type * as monaco_core from 'monaco-editor-core';
 import './App.css';
-
-(self as any).MonacoEnvironment = {
-  getWorkerUrl: () => './editor.worker.bundle.js',
-};
+import { ModuleGraphConnection } from 'webpack';
 
 const Hello = () => {
   function createLanguageClient(connection: any) {
@@ -44,18 +42,29 @@ const Hello = () => {
       id: 'python',
       extensions: ['.py'],
       aliases: ['python'],
-      mimetypes: ['application/json'],
+      mimetypes: ['application/text'],
     });
 
     monaco.editor.create(document.getElementById('container')!, {
       model: monaco.editor.createModel(
         ['import numpy', 'def func1():', '\tpass'].join('\n'),
         'python',
-        monaco.Uri.parse('inmemory://model.json')
+        monaco.Uri.parse('inmemory://model.py')
       ),
+      theme: 'vs-dark',
     });
-    // install Monaco language client services
-    MonacoServices.install(monaco);
+
+    monaco.editor.create(document.getElementById('container2')!, {
+      model: monaco.editor.createModel(
+        'func1()',
+        'python',
+        monaco.Uri.parse('inmemory://model2.py')
+      ),
+      theme: 'vs-dark',
+    });
+
+    // // install Monaco language client services
+    MonacoServices.install(monaco as typeof monaco_core);
 
     // hardcoded socket URL
     const url = 'ws://localhost:8999/index.html/monacoServer';
@@ -80,8 +89,11 @@ const Hello = () => {
         python-lsp-server
       </h1>
 
-      <div style={{ border: 'solid 1px black' }}>
+      <div style={{ border: 'solid 2px black' }}>
         <div id="container" style={{ height: '300px' }} />
+      </div>
+      <div style={{ border: 'solid 2px green' }}>
+        <div id="container2" style={{ height: '300px' }} />
       </div>
     </div>
   );
